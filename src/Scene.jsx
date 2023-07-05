@@ -1,6 +1,7 @@
 import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import { Suspense } from 'react';
 import { Track } from './Track';
+import { Ground } from './Ground';
 
 export function Scene() {
     return (
@@ -13,6 +14,7 @@ export function Scene() {
             <OrbitControls target={[-2.64, -0.71, 0.03]}/>
 
             <Track/>
+            <Ground/>
         </Suspense>
     );
 }
