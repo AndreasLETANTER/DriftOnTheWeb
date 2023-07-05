@@ -5,15 +5,13 @@ import { BufferAttribute } from "three";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 
 export function Ground() {
-    const gridMap = useLoader(TextureLoader, process.env.PUBLIC_URL + '/textures/ground-grid.png');
     const aoMap = useLoader(TextureLoader, process.env.PUBLIC_URL + '/textures/ground-ao.png');
     const alpaMap = useLoader(TextureLoader, process.env.PUBLIC_URL + '/textures/ground-alpha.png');
 
     useEffect(() => {
-        gridMap.anisotropy = 16;
         aoMap.anisotropy = 16;
         alpaMap.anisotropy = 16;
-    }, [gridMap, aoMap, alpaMap]);
+    }, [aoMap, alpaMap]);
 
     const meshRef = useRef(null);
     useEffect(() => {
