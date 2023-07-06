@@ -18,7 +18,7 @@ export function Car() {
         () => ({
             mass: 150,
             args: chassisBodyArgs,
-            position 
+            position,
         }),
         useRef(null),
     );

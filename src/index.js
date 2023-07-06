@@ -6,7 +6,7 @@ import { Physics } from "@react-three/cannon";
 
 createRoot(document.getElementById("root")).render(
   <Canvas>
-    <Physics gravity={[0, -30, 0]} broadphase="SAP">
+    <Physics gravity={[0, -2.6, 0]} broadphase="SAP">
       <Scene />
     </Physics>
   </Canvas>
