@@ -1,3 +1,4 @@
+import { usePlane } from "@react-three/cannon";
 import { MeshReflectorMaterial } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
@@ -7,6 +8,13 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 export function Ground() {
     const aoMap = useLoader(TextureLoader, process.env.PUBLIC_URL + '/textures/ground-ao.png');
     const alpaMap = useLoader(TextureLoader, process.env.PUBLIC_URL + '/textures/ground-alpha.png');
+    const [ref] = usePlane(
+        () => ({
+            rotation: [-Math.PI / 2, 0, 0],
+            type: 'Static',
+        }),
+        useRef(null),
+    );
 
     useEffect(() => {
         aoMap.anisotropy = 16;
