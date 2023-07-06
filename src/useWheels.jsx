@@ -33,11 +33,23 @@ export const useWheels = (width, height, front, radius) => {
         {
             ...wheelInfo,
             chassisConnectionPointLocal: [-width * 0.65, height * 0.4, -front],
+            suspensionStiffness: 40,
+            frictionSlip: 800,
+            rollInfluence: 0.02,
+            maxSuspensionForce: 12000,
+            dampingCompression: 5,
+            dampingRelaxation: 5,
             isFrontWheel: false,
         },
         {
             ...wheelInfo,
             chassisConnectionPointLocal: [width * 0.65, height * 0.4, -front],
+            suspensionStiffness: 40,
+            frictionSlip: 800,
+            rollInfluence: 0.02,
+            maxSuspensionForce: 12000,
+            dampingCompression: 5,
+            dampingRelaxation: 5,
             isFrontWheel: false,
         },
     ];
