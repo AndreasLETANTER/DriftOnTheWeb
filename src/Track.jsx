@@ -14,8 +14,7 @@ export function Track() {
     let geometry = result.scene.children[0].geometry;
 
     return (
-        <mesh>
-            <primitive object={geometry} attach={"geometry"}/>
+        <mesh geometry={geometry}>
             <meshBasicMaterial
                 toneMapped={false}
                 map={mapColor}

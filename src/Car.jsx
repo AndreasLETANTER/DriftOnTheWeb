@@ -38,7 +38,7 @@ export function Car() {
         mesh.children[0].position.set(-365, -18, -67);
     }, [mesh]);
     return (
-        //<primitive object={mesh} rotation-y={Math.PI}/>
+        // <primitive object={mesh} rotation-y={Math.PI}/>
         <group ref={vehicle} name='vehicle'>
             <mesh ref={chassisBody} castShadow>
                 <meshBasicMaterial color={'red'}/>
