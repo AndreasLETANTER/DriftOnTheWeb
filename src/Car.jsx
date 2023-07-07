@@ -5,6 +5,11 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useWheels } from './useWheels';
 import { WheelDebug } from './WheelDebug';
 import { useControls } from './useControls';
+import { Vector3, Quaternion } from 'three';
+
+const handleCollision = (e) => {
+    console.log("Collision occurred:", e);
+};
 
 export function Car() {
     let mesh = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/models/car.glb').scene;
@@ -20,9 +25,24 @@ export function Car() {
             mass: 150,
             args: chassisBodyArgs,
             position,
+            onCollide: handleCollision,
         }),
         useRef(null),
     );
+
+    useFrame(() => {
+        if (chassisBody.current) {
+            let carPosition = new Vector3(0, 0, 0);
+            let carSpeed = new Vector3(0, 0, 0);
+            let carRotation = new Quaternion(0, 0, 0, 0);
+
+            // carPosition.setFromMatrixPosition(chassisBody.current.matrix);
+            // carRotation.setFromRotationMatrix(chassisBody.current.matrix);
+            // console.log("Car position: ", carPosition);
+            // console.log("Car rotation: ", carRotation);
+            // console.log("Car speed: ", carSpeed);
+        }
+    });
 
     const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius);
     const [vehicle, vehicleApi] = useRaycastVehicle(
