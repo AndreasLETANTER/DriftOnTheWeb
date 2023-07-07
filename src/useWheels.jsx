@@ -9,7 +9,7 @@ export const useWheels = (width, height, front, radius) => {
         axleLocal: [1, 0, 0],
         suspensionStiffness: 60,
         suspensionRestLength: 0.1,
-        frictionSlip: 0.55,
+        frictionSlip: 0.22,
         dampingRelaxation: 2.3,
         dampingCompression: 4.4,
         maxSuspensionForce: 100000,
@@ -23,22 +23,22 @@ export const useWheels = (width, height, front, radius) => {
         {
             ...wheelInfo,
             chassisConnectionPointLocal: [-width * 0.65, height * 0.4, front],
-            isFrontWheel: true,
+            isFrontWheel: false,
         },
         {
             ...wheelInfo,
             chassisConnectionPointLocal: [width * 0.65, height * 0.4, front],
-            isFrontWheel: true,
+            isFrontWheel: false,
         },
         {
             ...wheelInfo,
             chassisConnectionPointLocal: [-width * 0.65, height * 0.4, -front],
-            isFrontWheel: false,
+            isFrontWheel: true,
         },
         {
             ...wheelInfo,
             chassisConnectionPointLocal: [width * 0.65, height * 0.4, -front],
-            isFrontWheel: false,
+            isFrontWheel: true,
         },
     ];
 
