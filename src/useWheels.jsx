@@ -1,4 +1,4 @@
-import { useCompoundBody } from '@react-three/cannon'
+import { useCompoundBody } from '@react-three/cannon'
 import { useRef } from 'react'
 
 export const useWheels = (width, height, front, radius) => {
