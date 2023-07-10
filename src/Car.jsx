@@ -33,9 +33,26 @@ export function Car() {
     useFrame(() => {
         if (chassisBody.current) {
             let carPosition = new Vector3(0, 0, 0);
-            let carSpeed = new Vector3(0, 0, 0);
+            let isDrifting = false;
+            let lastCarRotation = new Quaternion(0, 0, 0, 0);
             let carRotation = new Quaternion(0, 0, 0, 0);
+            let carApproximateSpeed = 0;
 
+
+            let differenceRotation = new Quaternion(0, 0, 0, 0);
+
+            carPosition.setFromMatrixPosition(chassisBody.current.matrix);
+            carRotation.setFromRotationMatrix(chassisBody.current.matrix);
+            differenceRotation.x = Math.abs(carRotation.x - lastCarRotation.x);
+            differenceRotation.y = Math.abs(carRotation.y - lastCarRotation.y);
+            differenceRotation.z = Math.abs(carRotation.z - lastCarRotation.z);
+            if (differenceRotation.x > 0.5 || differenceRotation.y > 0.5 || differenceRotation.z > 0.5) {
+                isDrifting = true;
+            }
+            if (isDrifting) {
+                console.log("Car is drifting!");
+            }
+            lastCarRotation = carRotation;
             // carPosition.setFromMatrixPosition(chassisBody.current.matrix);
             // carRotation.setFromRotationMatrix(chassisBody.current.matrix);
             // console.log("Car position: ", carPosition);
