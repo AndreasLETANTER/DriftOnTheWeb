@@ -1,19 +1,17 @@
 import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import { Track } from './Track';
 import { Ground } from './Ground';
 import { Car } from './Car';
 
-const GameInfo = {
-    score: 0,
-    speed: 0,
-    levelIndex: 0,
-};
-
 export function Scene() {
     let sceneContent = null;
+    const [levelIndex, setLevelIndex] = useState(0);
+    const switchLevel = (value) => {
+        setLevelIndex(value);
+    };
 
-    if (GameInfo.levelIndex === 0) {
+    if (levelIndex === 0) {
         sceneContent = (
             <Suspense fallback={null}>
                 <Environment
@@ -25,10 +23,10 @@ export function Scene() {
 
                 <Track/>
                 <Ground/>
-                <Car GameInfo/>
+                <Car switchLevel={switchLevel}/>
             </Suspense>
         );
-    } else if (GameInfo.levelIndex === 1) {
+    } else if (levelIndex === 1) {
     }
     return (sceneContent);
 }

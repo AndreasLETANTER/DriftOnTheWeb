@@ -11,7 +11,7 @@ const handleCollision = (e) => {
     console.log("Collision occurred:", e);
 };
 
-export function Car() {
+export function Car( { switchLevel } ) {
     let mesh = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/models/car.glb').scene;
     const position = [-1.5, 0.5, 3];
     const width = 0.15;
@@ -22,6 +22,9 @@ export function Car() {
     const currentCarSpeed = useRef(0);
     let lastCarRotation = new Quaternion(0, 0, 0, 0);
 
+    useEffect(() => {
+        switchLevel(1);
+    }, [switchLevel]);
     const [chassisBody, chassiApi] = useBox(
         () => ({
             mass: 150,
