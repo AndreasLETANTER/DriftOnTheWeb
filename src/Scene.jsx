@@ -4,9 +4,18 @@ import { Track } from './Track';
 import { Ground } from './Ground';
 import { Car } from './Car';
 
+const GameInfo = {
+    score: 0,
+    speed: 0,
+    levelIndex: 0,
+};
+
 export function Scene() {
-    return (
-        <Suspense fallback={null}>
+    let sceneContent = null;
+
+    if (GameInfo.levelIndex === 0) {
+        sceneContent = (
+            <Suspense fallback={null}>
             <Environment
                 files={process.env.PUBLIC_URL + '/textures/envmap.hdr'}
                 background={"both"}
@@ -18,5 +27,8 @@ export function Scene() {
             <Ground/>
             <Car/>
         </Suspense>
-    );
+        );
+    } else if (GameInfo.levelIndex === 1) {
+    }
+    return (sceneContent);
 }
