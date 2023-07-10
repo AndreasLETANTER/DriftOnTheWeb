@@ -1,6 +1,6 @@
 import { useBox, useRaycastVehicle } from '@react-three/cannon';
 import { useFrame, useLoader } from '@react-three/fiber';
-import { useEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useWheels } from './useWheels';
 import { WheelDebug } from './WheelDebug';
@@ -19,6 +19,8 @@ export function Car() {
     const front = 0.15;
     const wheelRadius = 0.05;
     const chassisBodyArgs = [width, height, front * 2];
+    const currentCarSpeed = useRef(0);
+    let lastCarRotation = new Quaternion(0, 0, 0, 0);
 
     const [chassisBody, chassiApi] = useBox(
         () => ({
@@ -29,15 +31,17 @@ export function Car() {
         }),
         useRef(null),
     );
+    useEffect(() => {
+        chassiApi.velocity.subscribe((velocity) => {
+            currentCarSpeed.current = Math.sqrt(velocity[0] ** 2 + velocity[1] ** 2 + velocity[2] ** 2);
+        });
+    });
 
     useFrame(() => {
         if (chassisBody.current) {
             let carPosition = new Vector3(0, 0, 0);
             let isDrifting = false;
-            let lastCarRotation = new Quaternion(0, 0, 0, 0);
             let carRotation = new Quaternion(0, 0, 0, 0);
-            let carApproximateSpeed = 0;
-
 
             let differenceRotation = new Quaternion(0, 0, 0, 0);
 
@@ -46,18 +50,13 @@ export function Car() {
             differenceRotation.x = Math.abs(carRotation.x - lastCarRotation.x);
             differenceRotation.y = Math.abs(carRotation.y - lastCarRotation.y);
             differenceRotation.z = Math.abs(carRotation.z - lastCarRotation.z);
-            if (differenceRotation.x > 0.5 || differenceRotation.y > 0.5 || differenceRotation.z > 0.5) {
+            if (differenceRotation.x > 0.5 || differenceRotation.y > 0.5 || differenceRotation.z > 0.5 && currentCarSpeed.current > 0.5) {
                 isDrifting = true;
             }
             if (isDrifting) {
                 console.log("Car is drifting!");
             }
             lastCarRotation = carRotation;
-            // carPosition.setFromMatrixPosition(chassisBody.current.matrix);
-            // carRotation.setFromRotationMatrix(chassisBody.current.matrix);
-            // console.log("Car position: ", carPosition);
-            // console.log("Car rotation: ", carRotation);
-            // console.log("Car speed: ", carSpeed);
         }
     });
 
