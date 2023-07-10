@@ -16,17 +16,17 @@ export function Scene() {
     if (GameInfo.levelIndex === 0) {
         sceneContent = (
             <Suspense fallback={null}>
-            <Environment
-                files={process.env.PUBLIC_URL + '/textures/envmap.hdr'}
-                background={"both"}
-            />
-            <PerspectiveCamera makeDefault position={[-6, 3.9, 6.21]} fov={50} />
-            <OrbitControls target={[-2.64, -0.71, 0.03]}/>
+                <Environment
+                    files={process.env.PUBLIC_URL + '/textures/envmap.hdr'}
+                    background={"both"}
+                />
+                <PerspectiveCamera makeDefault position={[-6, 3.9, 6.21]} fov={50} />
+                <OrbitControls target={[-2.64, -0.71, 0.03]}/>
 
-            <Track/>
-            <Ground/>
-            <Car/>
-        </Suspense>
+                <Track/>
+                <Ground/>
+                <Car GameInfo/>
+            </Suspense>
         );
     } else if (GameInfo.levelIndex === 1) {
     }
