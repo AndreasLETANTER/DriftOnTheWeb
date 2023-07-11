@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 
-export const useLevelControls = ( { switchLevel } ) => {
+export const useLevelControls = ( { switchLevel }, currentLevel ) => {
     let [controls, setControls] = useState({
     });
-
     useEffect(() => {
         const keyDownPressHandler = (e) => {
             setControls((controls) => ({
@@ -27,7 +26,9 @@ export const useLevelControls = ( { switchLevel } ) => {
     }, []);
 
     useEffect(() => {
-        if (controls.arrowright) {
+        if (controls['1']) {
+            switchLevel(0);
+        } else if (controls['2']) {
             switchLevel(1);
         }
     }, [controls, switchLevel]);

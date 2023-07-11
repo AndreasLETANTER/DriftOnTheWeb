@@ -12,7 +12,7 @@ export function Scene() {
         setLevelIndex(value);
     };
 
-    useLevelControls({ switchLevel });
+    useLevelControls({ switchLevel }, levelIndex);
     if (levelIndex === 0) {
         sceneContent = (
             <Suspense fallback={null}>
