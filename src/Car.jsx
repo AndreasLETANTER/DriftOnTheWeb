@@ -21,13 +21,13 @@ function CarSound(carSpeed) {
 
     useFrame(() => {
         engineSound.current.setVolume(1);
-        engineSound.current.setPlaybackRate(0.2);
+        engineSound.current.setPlaybackRate(1);
     });
     return (
         <>
             <PositionalAudio
                 ref={engineSound}
-                url={process.env.PUBLIC_URL + '/sounds/accelerate.mp3'}
+                url={process.env.PUBLIC_URL + '/sounds/engine.mp3'}
                 autoplay={true}
                 loop={true}
                 distance={5}
