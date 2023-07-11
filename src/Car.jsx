@@ -13,6 +13,7 @@ let score = 0;
 
 const handleCollision = (e) => {
     console.log("Collision occurred:", e);
+    score = 0;
 };
 
 function CarSound(carSpeed) {
