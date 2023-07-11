@@ -32,9 +32,18 @@ export function Car() {
         useRef(null),
     );
     useEffect(() => {
-        chassiApi.velocity.subscribe((velocity) => {
-            currentCarSpeed.current = Math.sqrt(velocity[0] ** 2 + velocity[1] ** 2 + velocity[2] ** 2);
-        });
+        let unsubscribe = null;
+
+        if (chassiApi && chassisBody) {
+            unsubscribe = chassiApi.velocity.subscribe((velocity) => {
+                if (velocity) {
+                    currentCarSpeed.current = Math.sqrt(velocity[0] ** 2 + velocity[1] ** 2 + velocity[2] ** 2);
+                }
+            });
+        }
+        return () => {
+            unsubscribe();
+        }
     });
 
     useFrame(() => {
