@@ -7,12 +7,34 @@ import { useWheels } from './useWheels';
 import { WheelDebug } from './WheelDebug';
 import { useControls } from './useControls';
 import { Vector3, Quaternion } from 'three';
+import { PositionalAudio } from '@react-three/drei';
 
 let score = 0;
 
 const handleCollision = (e) => {
     console.log("Collision occurred:", e);
 };
+
+function CarSound(carSpeed) {
+    // const accelerationSound = useRef<PositionalAudio>(null);
+    const engineSound = useRef(null)
+
+    useFrame(() => {
+        engineSound.current.setVolume(1);
+        engineSound.current.setPlaybackRate(0.2);
+    });
+    return (
+        <>
+            <PositionalAudio
+                ref={engineSound}
+                url={process.env.PUBLIC_URL + '/sounds/accelerate.mp3'}
+                autoplay={true}
+                loop={true}
+                distance={5}
+            />
+        </>
+    );
+}
 
 export function Car() {
     let mesh = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/models/car.glb').scene;
@@ -98,6 +120,7 @@ export function Car() {
             <WheelDebug radius={wheelRadius} wheelRef={wheels[1]}/>
             <WheelDebug radius={wheelRadius} wheelRef={wheels[2]}/>
             <WheelDebug radius={wheelRadius} wheelRef={wheels[3]}/>
+            <CarSound carSpeed={currentCarSpeed.current} />
             <Html position={[-2.5, -7, 0]}>
                 <div style={{ color: 'white', fontSize: '2em' }} className="speed-text">
                     <span>{score}</span>
