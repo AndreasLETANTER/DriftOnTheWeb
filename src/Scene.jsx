@@ -1,4 +1,5 @@
 import { Environment, OrbitControls, PerspectiveCamera } from '@react-three/drei';
+import { useLevelControls } from './useLevelControls';
 import { Suspense, useState } from 'react';
 import { Track } from './Track';
 import { Ground } from './Ground';
@@ -11,6 +12,7 @@ export function Scene() {
         setLevelIndex(value);
     };
 
+    useLevelControls({ switchLevel });
     if (levelIndex === 0) {
         sceneContent = (
             <Suspense fallback={null}>
@@ -23,10 +25,14 @@ export function Scene() {
 
                 <Track/>
                 <Ground/>
-                <Car switchLevel={switchLevel}/>
+                <Car/>
             </Suspense>
         );
     } else if (levelIndex === 1) {
+        sceneContent = (
+            <Suspense fallback={null}>
+            </Suspense>
+        )
     }
     return (sceneContent);
 }

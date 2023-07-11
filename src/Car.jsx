@@ -11,7 +11,7 @@ const handleCollision = (e) => {
     console.log("Collision occurred:", e);
 };
 
-export function Car( { switchLevel } ) {
+export function Car() {
     let mesh = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/models/car.glb').scene;
     const position = [-1.5, 0.5, 3];
     const width = 0.15;
@@ -22,9 +22,6 @@ export function Car( { switchLevel } ) {
     const currentCarSpeed = useRef(0);
     let lastCarRotation = new Quaternion(0, 0, 0, 0);
 
-    useEffect(() => {
-        switchLevel(1);
-    }, [switchLevel]);
     const [chassisBody, chassiApi] = useBox(
         () => ({
             mass: 150,
@@ -53,7 +50,7 @@ export function Car( { switchLevel } ) {
             differenceRotation.x = Math.abs(carRotation.x - lastCarRotation.x);
             differenceRotation.y = Math.abs(carRotation.y - lastCarRotation.y);
             differenceRotation.z = Math.abs(carRotation.z - lastCarRotation.z);
-            if (differenceRotation.x > 0.5 || differenceRotation.y > 0.5 || differenceRotation.z > 0.5 && currentCarSpeed.current > 0.5) {
+            if ((differenceRotation.x > 0.5 || differenceRotation.y > 0.5 || differenceRotation.z > 0.5) && currentCarSpeed.current > 0.5) {
                 isDrifting = true;
             }
             if (isDrifting) {
