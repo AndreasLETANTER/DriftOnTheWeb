@@ -1,11 +1,14 @@
 import { useBox, useRaycastVehicle } from '@react-three/cannon';
 import { useFrame, useLoader } from '@react-three/fiber';
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { Html } from '@react-three/drei';
 import { useWheels } from './useWheels';
 import { WheelDebug } from './WheelDebug';
 import { useControls } from './useControls';
 import { Vector3, Quaternion } from 'three';
+
+let score = 0;
 
 const handleCollision = (e) => {
     console.log("Collision occurred:", e);
@@ -63,7 +66,7 @@ export function Car() {
                 isDrifting = true;
             }
             if (isDrifting) {
-                console.log("Car is drifting!");
+                score += 1000;
             }
             lastCarRotation = carRotation;
         }
@@ -95,6 +98,11 @@ export function Car() {
             <WheelDebug radius={wheelRadius} wheelRef={wheels[1]}/>
             <WheelDebug radius={wheelRadius} wheelRef={wheels[2]}/>
             <WheelDebug radius={wheelRadius} wheelRef={wheels[3]}/>
+            <Html position={[-2.5, -7, 0]}>
+                <div style={{ color: 'white', fontSize: '2em' }} className="speed-text">
+                    <span>{score}</span>
+                </div>
+            </Html>
         </group>
     );
 }
