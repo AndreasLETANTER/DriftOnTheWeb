@@ -20,7 +20,7 @@ function HandleCollision(collisionEvent, carSpeed ) {
         console.log()
         if (collided === true && collisionEvent !== undefined) {
             crashSound.current.stop()
-            crashSound.current.setVolume(2 + (collisionEvent.carSpeed / 2));
+            crashSound.current.setVolume(2 * (collisionEvent.carSpeed));
             crashSound.current.play();
             score = 0;
             collisionEvent = undefined;
@@ -58,7 +58,7 @@ function CarSound(carSpeed) {
         if (collided === true) {
             accelerationSound.current.setVolume(0);
         } else {
-            accelerationSound.current.setVolume((carSpeed.carSpeed / 5) * 2);
+            accelerationSound.current.setVolume((carSpeed.carSpeed / 10) * 2);
         }
         rpmTarget = ((gearPosition % 1) + Math.log(gearPosition)) / 3;
         if (rpmTarget < 0) {
