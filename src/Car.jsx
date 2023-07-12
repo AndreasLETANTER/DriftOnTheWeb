@@ -57,7 +57,7 @@ function CarSound(carSpeed) {
         if (collided === true) {
             accelerationSound.current.setVolume(0);
         } else {
-            accelerationSound.current.setVolume((carSpeed.carSpeed / 10) * 2);
+            accelerationSound.current.setVolume((carSpeed.carSpeed / 7) * 2);
         }
         rpmTarget = ((gearPosition % 1) + Math.log(gearPosition)) / 3;
         if (rpmTarget < 0) {
