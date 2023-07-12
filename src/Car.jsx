@@ -17,7 +17,6 @@ function HandleCollision(collisionEvent, carSpeed ) {
     const crashSound = useRef(null);
 
     useFrame(() => {
-        console.log()
         if (collided === true && collisionEvent !== undefined) {
             crashSound.current.stop()
             crashSound.current.setVolume(2 * (collisionEvent.carSpeed));
