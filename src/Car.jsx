@@ -6,7 +6,7 @@ import { Html } from '@react-three/drei';
 import { useWheels } from './useWheels';
 import { WheelDebug } from './WheelDebug';
 import { useControls } from './useControls';
-import { Vector3, Quaternion } from 'three';
+import { Vector3, Quaternion, MathUtils } from 'three';
 import { PositionalAudio } from '@react-three/drei';
 
 let score = 0;
@@ -17,18 +17,34 @@ const handleCollision = (e) => {
 };
 
 function CarSound(carSpeed) {
-    // const accelerationSound = useRef<PositionalAudio>(null);
-    const engineSound = useRef(null)
+    const accelerationSound = useRef(null);
+    const engineSound = useRef(null);
+    const gears = 8;
+    let rpmTarget = 0;
+    const gearPosition = carSpeed.carSpeed / (3 / gears);
 
     useFrame(() => {
         engineSound.current.setVolume(1);
         engineSound.current.setPlaybackRate(1);
+        accelerationSound.current.setVolume((carSpeed.carSpeed / 3) * 2);
+        rpmTarget = ((gearPosition % 1) + Math.log(gearPosition)) / 3;
+        if (rpmTarget < 0) {
+            rpmTarget = 0;
+        } 
+        accelerationSound.current.setPlaybackRate(MathUtils.lerp(accelerationSound.current.playbackRate, rpmTarget + 2, 0));
     });
     return (
         <>
             <PositionalAudio
                 ref={engineSound}
                 url={process.env.PUBLIC_URL + '/sounds/engine.mp3'}
+                autoplay={true}
+                loop={true}
+                distance={5}
+            />
+            <PositionalAudio
+                ref={accelerationSound}
+                url={process.env.PUBLIC_URL + '/sounds/accelerate.mp3'}
                 autoplay={true}
                 loop={true}
                 distance={5}
