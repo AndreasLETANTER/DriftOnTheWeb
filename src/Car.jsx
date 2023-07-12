@@ -161,10 +161,10 @@ export function Car() {
 
             carPosition.setFromMatrixPosition(chassisBody.current.matrix);
             carRotation.setFromRotationMatrix(chassisBody.current.matrix);
-            differenceRotation.x = Math.abs(carRotation.x - lastCarRotation.x);
-            differenceRotation.y = Math.abs(carRotation.y - lastCarRotation.y);
-            differenceRotation.z = Math.abs(carRotation.z - lastCarRotation.z);
-            if ((differenceRotation.x > 0.7 || differenceRotation.y > 0.2 || differenceRotation.z > 0.5) && currentCarSpeed.current > 0.3) {
+            differenceRotation.x = (carRotation.x - lastCarRotation.x);
+            differenceRotation.y = (carRotation.y - lastCarRotation.y);
+            differenceRotation.z = (carRotation.z - lastCarRotation.z);
+            if ((differenceRotation.x > 0.4 || differenceRotation.y > 0.2) && currentCarSpeed.current > 0.3) {
                 isDrifting = true;
             } else {
                 isDrifting = false;
