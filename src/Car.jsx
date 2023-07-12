@@ -133,7 +133,7 @@ export function Car() {
             differenceRotation.x = Math.abs(carRotation.x - lastCarRotation.x);
             differenceRotation.y = Math.abs(carRotation.y - lastCarRotation.y);
             differenceRotation.z = Math.abs(carRotation.z - lastCarRotation.z);
-            if ((differenceRotation.x > 0.5 || differenceRotation.y > 0.5 || differenceRotation.z > 0.5) && currentCarSpeed.current > 0.5) {
+            if ((differenceRotation.x > 0.7 || differenceRotation.y > 0.2 || differenceRotation.z > 0.5) && currentCarSpeed.current > 0.3) {
                 isDrifting = true;
             }
             if (isDrifting) {
