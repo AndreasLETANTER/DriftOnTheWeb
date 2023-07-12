@@ -28,8 +28,8 @@ export const useControls = (vehicleApi, chassisApi) => {
 
     useEffect(() => {
         if (controls.z) {
-            vehicleApi.applyEngineForce(200, 0);
-            vehicleApi.applyEngineForce(200, 1);
+            vehicleApi.applyEngineForce(100, 0);
+            vehicleApi.applyEngineForce(100, 1);
         } else if (controls.s) {
             vehicleApi.applyEngineForce(-75, 0);
             vehicleApi.applyEngineForce(-75, 1);
@@ -41,18 +41,18 @@ export const useControls = (vehicleApi, chassisApi) => {
             vehicleApi.setSteeringValue(0.50, 2);
             vehicleApi.setSteeringValue(0.50, 3);
             setTimeout(() => {
-                vehicleApi.setSteeringValue(-0.30, 0);
-                vehicleApi.setSteeringValue(-0.30, 1);
-            }, 100);
-            chassisApi.applyLocalImpulse([0, 0, -5], [0, 0, -1]);
+                vehicleApi.setSteeringValue(-0.80, 0);
+                vehicleApi.setSteeringValue(-0.80, 1);
+            }, 10);
+            chassisApi.applyLocalImpulse([0, 0, -10], [0, 0, -1]);
         } else if (controls.d) {
             vehicleApi.setSteeringValue(-0.70, 2);
             vehicleApi.setSteeringValue(-0.70, 3);
             setTimeout(() => {
-                vehicleApi.setSteeringValue(0.30, 0);
-                vehicleApi.setSteeringValue(0.30, 1);
-            }, 100);
-            chassisApi.applyLocalImpulse([0, 0, -5], [0, 0, -1]);
+                vehicleApi.setSteeringValue(0.80, 0);
+                vehicleApi.setSteeringValue(0.80, 1);
+            }, 10);
+            chassisApi.applyLocalImpulse([0, 0, -10], [0, 0, -1]);
         } else {
             vehicleApi.setSteeringValue(0, 2);
             vehicleApi.setSteeringValue(0, 3);
