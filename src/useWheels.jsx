@@ -18,15 +18,30 @@ export const useWheels = (width, height, front, radius) => {
         customSlidingRotationalSpeed: -30,
         useCustomSlidingRotationalSpeed: true,
     };
+    const backWheelInfo = {
+        radius,
+        directionLocal: [0, -1, 0],
+        axleLocal: [1, 0, 0],
+        suspensionStiffness: 100,
+        suspensionRestLength: 0.1,
+        frictionSlip: 0.22,
+        dampingRelaxation: 2.3,
+        dampingCompression: 4.4,
+        maxSuspensionForce: 100000,
+        RollInfluence: 0.2,
+        maxSuspensionTravel: 0.1,
+        customSlidingRotationalSpeed: -300,
+        useCustomSlidingRotationalSpeed: true,
+    };
 
     const wheelInfos = [
         {
-            ...wheelInfo,
+            ...backWheelInfo,
             chassisConnectionPointLocal: [-width * 0.65, height * 0.4, front],
             isFrontWheel: false,
         },
         {
-            ...wheelInfo,
+            ...backWheelInfo,
             chassisConnectionPointLocal: [width * 0.65, height * 0.4, front],
             isFrontWheel: false,
         },

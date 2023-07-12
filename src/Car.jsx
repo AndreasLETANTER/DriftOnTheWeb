@@ -130,7 +130,7 @@ export function Car() {
 
     const [chassisBody, chassiApi] = useBox(
         () => ({
-            mass: 150,
+            mass: 200,
             args: chassisBodyArgs,
             position,
             onCollide: setCollision,
