@@ -9,6 +9,7 @@ import { useControls } from './useControls';
 import { Vector3, Quaternion, MathUtils } from 'three';
 import { PositionalAudio } from '@react-three/drei';
 
+let isDrifting = false;
 let score = 0;
 let collided = false;
 let collisionEvent = undefined;
@@ -85,6 +86,37 @@ function CarSound(carSpeed) {
     );
 }
 
+function DriftSound(carSpeed) {
+    const driftSound = useRef(null);
+
+    useFrame(() => {
+        if (isDrifting === true && driftSound.current.isPlaying === false) {
+            driftSound.current.setVolume(1.5);
+            driftSound.current.setPlaybackRate(1);
+            driftSound.current.play();
+        } else {
+            if (collided === true) {
+                driftSound.current.setVolume(0);
+            } else {
+                setTimeout(() => {
+                    driftSound.current.setVolume(0);
+                }, 500000);
+            }
+        }
+    });
+    return (
+        <>
+            <PositionalAudio
+                ref={driftSound}
+                url={process.env.PUBLIC_URL + '/sounds/drift.mp3'}
+                autoplay={false}
+                loop={false}
+                distance={5}
+            />
+        </>
+    );
+}
+
 export function Car() {
     let mesh = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/models/car.glb').scene;
     const position = [-1.5, 0.5, 3];
@@ -123,7 +155,6 @@ export function Car() {
     useFrame(() => {
         if (chassisBody.current) {
             let carPosition = new Vector3(0, 0, 0);
-            let isDrifting = false;
             let carRotation = new Quaternion(0, 0, 0, 0);
 
             let differenceRotation = new Quaternion(0, 0, 0, 0);
@@ -135,6 +166,8 @@ export function Car() {
             differenceRotation.z = Math.abs(carRotation.z - lastCarRotation.z);
             if ((differenceRotation.x > 0.7 || differenceRotation.y > 0.2 || differenceRotation.z > 0.5) && currentCarSpeed.current > 0.3) {
                 isDrifting = true;
+            } else {
+                isDrifting = false;
             }
             if (isDrifting) {
                 score += 1000;
@@ -152,14 +185,12 @@ export function Car() {
         }),
         useRef(null),
     );
-
     useControls(vehicleApi, chassiApi);
 
     useEffect(() => {
         mesh.scale.set(0.0012, 0.0012, 0.0012);
         mesh.children[0].position.set(-365, -18, -67);
     }, [mesh]);
-
     return (
         <group ref={vehicle} name='vehicle'>
             <group ref={chassisBody}  name='chassisBody'>
@@ -169,8 +200,9 @@ export function Car() {
             <WheelDebug radius={wheelRadius} wheelRef={wheels[1]}/>
             <WheelDebug radius={wheelRadius} wheelRef={wheels[2]}/>
             <WheelDebug radius={wheelRadius} wheelRef={wheels[3]}/>
-            <CarSound carSpeed={currentCarSpeed.current} />
-            <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current} />
+            <CarSound carSpeed={currentCarSpeed.current}/>
+            <DriftSound carSpeed={currentCarSpeed.current}/>
+            <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
             <Html position={[-2.5, -7, 0]}>
                 <div style={{ color: 'white', fontSize: '2em' }} className="speed-text">
                     <span>{score}</span>
