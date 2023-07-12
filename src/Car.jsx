@@ -14,7 +14,7 @@ let score = 0;
 let collided = false;
 let collisionEvent = undefined;
 
-function HandleCollision(collisionEvent, carSpeed ) {
+function HandleCollision(collisionEvent, carSpeed) {
     const crashSound = useRef(null);
 
     useFrame(() => {
