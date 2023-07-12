@@ -46,8 +46,8 @@ export const useControls = (vehicleApi, chassisApi) => {
             }, 10);
             chassisApi.applyLocalImpulse([0, 0, -10], [0, 0, -1]);
         } else if (controls.d) {
-            vehicleApi.setSteeringValue(-0.70, 2);
-            vehicleApi.setSteeringValue(-0.70, 3);
+            vehicleApi.setSteeringValue(-0.50, 2);
+            vehicleApi.setSteeringValue(-0.50, 3);
             setTimeout(() => {
                 vehicleApi.setSteeringValue(0.80, 0);
                 vehicleApi.setSteeringValue(0.80, 1);
