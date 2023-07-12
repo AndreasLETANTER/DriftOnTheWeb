@@ -10,10 +10,39 @@ import { Vector3, Quaternion, MathUtils } from 'three';
 import { PositionalAudio } from '@react-three/drei';
 
 let score = 0;
+let collided = false;
+let collisionEvent = undefined;
 
-const handleCollision = (e) => {
-    console.log("Collision occurred:", e);
-    score = 0;
+function HandleCollision(collisionEvent, carSpeed ) {
+    const crashSound = useRef(null);
+
+    useFrame(() => {
+        console.log()
+        if (collided === true && collisionEvent !== undefined) {
+            crashSound.current.stop()
+            crashSound.current.setVolume(2 + (collisionEvent.carSpeed / 2));
+            crashSound.current.play();
+            score = 0;
+            collisionEvent = undefined;
+            collided = false;
+        }
+    }, []);
+    return (
+        <>
+            <PositionalAudio
+                url="/sounds/crash.mp3"
+                ref={crashSound}
+                distance={1}
+                loop={false}
+                autoplay={false}
+            />
+        </>
+    );
+}
+
+const setCollision = (e) => {
+    collisionEvent = e;
+    collided = true;
 };
 
 function CarSound(carSpeed) {
@@ -26,7 +55,11 @@ function CarSound(carSpeed) {
     useFrame(() => {
         engineSound.current.setVolume(1);
         engineSound.current.setPlaybackRate(1);
-        accelerationSound.current.setVolume((carSpeed.carSpeed / 3) * 2);
+        if (collided === true) {
+            accelerationSound.current.setVolume(0);
+        } else {
+            accelerationSound.current.setVolume((carSpeed.carSpeed / 5) * 2);
+        }
         rpmTarget = ((gearPosition % 1) + Math.log(gearPosition)) / 3;
         if (rpmTarget < 0) {
             rpmTarget = 0;
@@ -69,7 +102,7 @@ export function Car() {
             mass: 150,
             args: chassisBodyArgs,
             position,
-            onCollide: handleCollision,
+            onCollide: setCollision,
         }),
         useRef(null),
     );
@@ -138,6 +171,7 @@ export function Car() {
             <WheelDebug radius={wheelRadius} wheelRef={wheels[2]}/>
             <WheelDebug radius={wheelRadius} wheelRef={wheels[3]}/>
             <CarSound carSpeed={currentCarSpeed.current} />
+            <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current} />
             <Html position={[-2.5, -7, 0]}>
                 <div style={{ color: 'white', fontSize: '2em' }} className="speed-text">
                     <span>{score}</span>
