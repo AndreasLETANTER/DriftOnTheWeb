@@ -1,4 +1,5 @@
 body, html, #root {
+  padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
@@ -7,4 +8,11 @@ body, html, #root {
 
 .speed-text {
   margin-top: -40px;
+}
+
+.help-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

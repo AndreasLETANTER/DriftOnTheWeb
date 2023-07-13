@@ -17,7 +17,7 @@ function Start() {
 
 function Help({ noHelpNeeded }) {
   return (
-    <div className="help">
+    <div className="help-text">
       <button onClick={noHelpNeeded}>Start</button>
     </div>
   );

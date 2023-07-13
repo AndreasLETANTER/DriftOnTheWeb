@@ -6,7 +6,7 @@ import { Html } from '@react-three/drei';
 import { useWheels } from './useWheels';
 import { WheelDebug } from './WheelDebug';
 import { useControls } from './useControls';
-import { Vector3, Quaternion, MathUtils } from 'three';
+import { MathUtils } from 'three';
 import { PositionalAudio } from '@react-three/drei';
 
 let isDrifting = false;
@@ -126,7 +126,6 @@ export function Car() {
     const wheelRadius = 0.05;
     const chassisBodyArgs = [width, height, front * 2];
     const currentCarSpeed = useRef(0);
-    let lastCarRotation = new Quaternion(0, 0, 0, 0);
 
     const [chassisBody, chassiApi] = useBox(
         () => ({
