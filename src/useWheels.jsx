@@ -1,15 +1,16 @@
 import { useCompoundBody } from '@react-three/cannon'
 import { useRef } from 'react'
 
-export const useWheels = (width, height, front, radius) => {
+export const useWheels = (width, height, front, radius, carSpeed) => {
     const wheels = [useRef(null), useRef(null), useRef(null), useRef(null)]
+    console.log(carSpeed)
     const wheelInfo = {
         radius,
         directionLocal: [0, -1, 0],
         axleLocal: [1, 0, 0],
         suspensionStiffness: 60,
         suspensionRestLength: 0.1,
-        frictionSlip: 0.3,                  // if speed is not high enough, need to set this value to 1
+        frictionSlip: carSpeed > 0.5 ? 0.3 : 1,                  // if speed is not high enough, need to set this value to 1
         dampingRelaxation: 2.3,
         dampingCompression: 4.4,
         maxSuspensionForce: 100000,
@@ -24,7 +25,7 @@ export const useWheels = (width, height, front, radius) => {
         axleLocal: [1, 0, 0],
         suspensionStiffness: 100,
         suspensionRestLength: 0.1,
-        frictionSlip: 0.8,                  // if speed is not high enough, need to set this value to 1
+        frictionSlip: carSpeed > 0.5 ? 0.8 : 1,                  // if speed is not high enough, need to set this value to 1
         dampingRelaxation: 2.3,
         dampingCompression: 4.4,
         maxSuspensionForce: 100000,

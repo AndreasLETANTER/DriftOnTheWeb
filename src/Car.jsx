@@ -176,7 +176,7 @@ export function Car() {
         }
     });
 
-    const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius);
+    const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius, currentCarSpeed.current);
     const [vehicle, vehicleApi] = useRaycastVehicle(
         () => ({
             chassisBody,
@@ -185,7 +185,6 @@ export function Car() {
         }),
         useRef(null),
     );
-    console.log(currentCarSpeed.current)
     useControls(vehicleApi, chassiApi, currentCarSpeed.current);
 
     useEffect(() => {
