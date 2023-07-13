@@ -10,7 +10,7 @@ export const useWheels = (width, height, front, radius, carSpeed) => {
         axleLocal: [1, 0, 0],
         suspensionStiffness: 60,
         suspensionRestLength: 0.1,
-        frictionSlip: carSpeed > 0.5 ? 0.3 : 1,                  // if speed is not high enough, need to set this value to 1
+        frictionSlip: carSpeed > 0.7 ? 1 : 0.3,
         dampingRelaxation: 2.3,
         dampingCompression: 4.4,
         maxSuspensionForce: 100000,
@@ -19,13 +19,14 @@ export const useWheels = (width, height, front, radius, carSpeed) => {
         customSlidingRotationalSpeed: -30,
         useCustomSlidingRotationalSpeed: true,
     };
+    console.log (wheelInfo.frictionSlip)
     const backWheelInfo = {
         radius,
         directionLocal: [0, -1, 0],
         axleLocal: [1, 0, 0],
         suspensionStiffness: 100,
         suspensionRestLength: 0.1,
-        frictionSlip: carSpeed > 0.5 ? 0.8 : 1,                  // if speed is not high enough, need to set this value to 1
+        frictionSlip: carSpeed > 0.7 ? 1 : 0.8,
         dampingRelaxation: 2.3,
         dampingCompression: 4.4,
         maxSuspensionForce: 100000,
