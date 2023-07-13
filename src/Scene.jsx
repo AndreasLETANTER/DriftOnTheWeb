@@ -21,7 +21,7 @@ export function Scene() {
                     background={"both"}
                 />
                 <PerspectiveCamera makeDefault position={[-6, 3.9, 6.21]} fov={50} />
-                <OrbitControls target={[-2.64, -0.71, 0.03]}/>
+                <OrbitControls target={[-2.64, -0.71, 0.03]} enableRotate={false} enableZoom={false}/>
 
                 <Track/>
                 <Ground/>
