@@ -3,7 +3,6 @@ import { useRef } from 'react'
 
 export const useWheels = (width, height, front, radius, carSpeed) => {
     const wheels = [useRef(null), useRef(null), useRef(null), useRef(null)]
-    console.log(carSpeed)
     const wheelInfo = {
         radius,
         directionLocal: [0, -1, 0],
@@ -19,7 +18,6 @@ export const useWheels = (width, height, front, radius, carSpeed) => {
         customSlidingRotationalSpeed: -30,
         useCustomSlidingRotationalSpeed: true,
     };
-    console.log (wheelInfo.frictionSlip)
     const backWheelInfo = {
         radius,
         directionLocal: [0, -1, 0],
