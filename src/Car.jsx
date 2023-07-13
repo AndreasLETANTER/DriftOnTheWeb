@@ -152,30 +152,6 @@ export function Car() {
         }
     });
 
-    useFrame(() => {
-        if (chassisBody.current) {
-            let carPosition = new Vector3(0, 0, 0);
-            let carRotation = new Quaternion(0, 0, 0, 0);
-
-            let differenceRotation = new Quaternion(0, 0, 0, 0);
-
-            carPosition.setFromMatrixPosition(chassisBody.current.matrix);
-            carRotation.setFromRotationMatrix(chassisBody.current.matrix);
-            differenceRotation.x = (carRotation.x - lastCarRotation.x);
-            differenceRotation.y = (carRotation.y - lastCarRotation.y);
-            differenceRotation.z = (carRotation.z - lastCarRotation.z);
-            if ((differenceRotation.x > 0.4 || differenceRotation.y > 0.2) && currentCarSpeed.current > 0.3) {
-                isDrifting = true;
-            } else {
-                isDrifting = false;
-            }
-            if (isDrifting) {
-                score += 1000;
-            }
-            lastCarRotation = carRotation;
-        }
-    });
-
     const [wheels, wheelInfos] = useWheels(width, height, front, wheelRadius, currentCarSpeed.current);
     const [vehicle, vehicleApi] = useRaycastVehicle(
         () => ({
@@ -185,7 +161,13 @@ export function Car() {
         }),
         useRef(null),
     );
-    useControls(vehicleApi, chassiApi, currentCarSpeed.current);
+    isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current);
+
+    if (chassisBody.current) {
+        if (isDrifting) {
+            score += 1000;
+        }
+    }
 
     useEffect(() => {
         mesh.scale.set(0.0012, 0.0012, 0.0012);

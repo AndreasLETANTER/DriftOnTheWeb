@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 export const useControls = (vehicleApi, chassisApi, carSpeed) => {
+    let isDrifting = false;
     let [controls, setControls] = useState({
     });
 
@@ -25,7 +26,6 @@ export const useControls = (vehicleApi, chassisApi, carSpeed) => {
             window.removeEventListener('keyup', keyUpPressHandler);
         };
     }, []);
-
     useEffect(() => {
         if (controls.z) {
             vehicleApi.applyEngineForce(70, 0);
@@ -81,5 +81,8 @@ export const useControls = (vehicleApi, chassisApi, carSpeed) => {
             vehicleApi.setBrake(0, 3);
         }
     }, [controls, vehicleApi, chassisApi, carSpeed]);
-    return controls;
+    if (carSpeed > 0.7 && (controls.q || controls.d)) {
+        isDrifting = true;
+    }
+    return isDrifting;
 };
