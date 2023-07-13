@@ -18,6 +18,31 @@ function Start() {
 function Help({ noHelpNeeded }) {
   return (
     <div className="help-text">
+      <h1>DriftOnTheWeb</h1>
+      <p className="game-info-text">This game has been made with React Three Fiber and CannonJs</p>
+      <p className="controls-text">
+        <span className="key">Z
+          <span className="key-text"> - Accelerate</span>
+        </span>
+        <span className="key">Q
+          <span className="key-text"> - Turn Left</span>
+        </span>
+        <span className="key">D
+          <span className="key-text"> - Turn Right</span>
+        </span>
+        <span className="key">S
+          <span className="key-text"> - Brake</span>
+        </span>
+        <span className="key">B
+          <span className="key-text"> - Handbrake</span>
+        </span>
+        <span className="key">N
+          <span className="key-text"> - Nitro</span>
+        </span>
+        <span className="key">R
+          <span className="key-text"> - Reset the car</span>
+        </span>
+      </p>
       <button onClick={noHelpNeeded}>Start</button>
     </div>
   );
