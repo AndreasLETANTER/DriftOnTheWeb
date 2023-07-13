@@ -1,6 +1,6 @@
 import { useBox } from "@react-three/cannon";
 
-const debug = false;
+const debug = true;
 
 export function ColliderBox({ position, scale }) {
     useBox(() => ({ args: scale, position, type: 'Static'}));

@@ -9,7 +9,7 @@ export const useWheels = (width, height, front, radius) => {
         axleLocal: [1, 0, 0],
         suspensionStiffness: 60,
         suspensionRestLength: 0.1,
-        frictionSlip: 0.3,
+        frictionSlip: 0.3,                  // if speed is not high enough, need to set this value to 1
         dampingRelaxation: 2.3,
         dampingCompression: 4.4,
         maxSuspensionForce: 100000,
@@ -24,7 +24,7 @@ export const useWheels = (width, height, front, radius) => {
         axleLocal: [1, 0, 0],
         suspensionStiffness: 100,
         suspensionRestLength: 0.1,
-        frictionSlip: 0.8,
+        frictionSlip: 0.8,                  // if speed is not high enough, need to set this value to 1
         dampingRelaxation: 2.3,
         dampingCompression: 4.4,
         maxSuspensionForce: 100000,

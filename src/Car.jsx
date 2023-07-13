@@ -185,7 +185,8 @@ export function Car() {
         }),
         useRef(null),
     );
-    useControls(vehicleApi, chassiApi);
+    console.log(currentCarSpeed.current)
+    useControls(vehicleApi, chassiApi, currentCarSpeed.current);
 
     useEffect(() => {
         mesh.scale.set(0.0012, 0.0012, 0.0012);
