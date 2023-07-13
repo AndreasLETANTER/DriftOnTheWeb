@@ -19,7 +19,9 @@ function Help({ noHelpNeeded }) {
   return (
     <div className="help-text">
       <h1>DriftOnTheWeb</h1>
-      <p className="game-info-text">This game has been made with React Three Fiber and CannonJs</p>
+      <p className="game-info-text">This game has been made with React Three Fiber and CannonJs
+        <span className="game-info-text"> by <a href="https://github.com/AndreasLETANTER">@AndreasLETANTER</a></span>
+      </p>
       <p className="controls-text">
         <span className="key">Z
           <span className="key-text"> - Accelerate</span>
