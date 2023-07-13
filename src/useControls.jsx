@@ -80,6 +80,10 @@ export const useControls = (vehicleApi, chassisApi, carSpeed) => {
             vehicleApi.setBrake(0, 2);
             vehicleApi.setBrake(0, 3);
         }
+        if (controls.n) {
+            vehicleApi.applyEngineForce(300, 0);
+            vehicleApi.applyEngineForce(300, 1)
+        }
     }, [controls, vehicleApi, chassisApi, carSpeed]);
     if (carSpeed > 0.7 && (controls.q || controls.d)) {
         isDrifting = true;
