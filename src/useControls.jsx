@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+let nbDrift = 0;
+
 export const useControls = (vehicleApi, chassisApi, carSpeed) => {
     let isDrifting = false;
     let [controls, setControls] = useState({
@@ -85,8 +87,14 @@ export const useControls = (vehicleApi, chassisApi, carSpeed) => {
             vehicleApi.applyEngineForce(300, 1)
         }
     }, [controls, vehicleApi, chassisApi, carSpeed]);
-    if (carSpeed > 0.7 && (controls.q || controls.d)) {
+    if (nbDrift == 2 && carSpeed > 0.7) {
         isDrifting = true;
+        nbDrift = 0;
+    }
+    if (carSpeed > 0.7 && (controls.q || controls.d)) {
+        nbDrift += 1;
+    } else {
+        nbDrift = 0;
     }
     return isDrifting;
 };
