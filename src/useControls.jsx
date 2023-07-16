@@ -87,7 +87,7 @@ export const useControls = (vehicleApi, chassisApi, carSpeed) => {
             vehicleApi.applyEngineForce(300, 1)
         }
     }, [controls, vehicleApi, chassisApi, carSpeed]);
-    if (nbDrift == 2 && carSpeed > 0.7) {
+    if (nbDrift === 2 && carSpeed > 0.7) {
         isDrifting = true;
         nbDrift = 0;
     }
