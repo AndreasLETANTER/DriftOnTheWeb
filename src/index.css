@@ -20,6 +20,7 @@ body, html, #root {
   background-color: #1d577b;
   color: #DCF763;
   font-size: 1.5rem;
+  font-family: BlinkMacSystemFont;
 }
 
 .game-info-text {
