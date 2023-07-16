@@ -119,7 +119,7 @@ function DriftSound(carSpeed) {
 
 export function Car() {
     let mesh = useLoader(GLTFLoader, process.env.PUBLIC_URL + '/models/car.glb').scene;
-    const position = [-1.5, 0.5, 3];
+    const position = [-2, 0.5, 2];
     const width = 0.15;
     const height = 0.07;
     const front = 0.15;
@@ -133,6 +133,7 @@ export function Car() {
             args: chassisBodyArgs,
             position,
             onCollide: setCollision,
+            rotation: [0, Math.PI / 2, 0],
         }),
         useRef(null),
     );
