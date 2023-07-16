@@ -45,7 +45,7 @@ function Help({ noHelpNeeded }) {
           <span className="key-text"> - Reset the car</span>
         </span>
       </p>
-      <button onClick={noHelpNeeded}>Start</button>
+      <button className="start-button" onClick={noHelpNeeded}>Start</button>
     </div>
   );
 }

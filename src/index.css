@@ -32,10 +32,30 @@ body, html, #root {
   justify-content: center;
   flex-direction: column;
   flex-wrap: wrap;
-  padding-bottom: 1%;
 }
 
 .key {
   font-weight: bold;
   padding-bottom: 10%;
+}
+
+.start-button {
+  align-items: center;
+  background-color: #E6E8E6;
+  border-radius: 12px;
+  box-shadow: transparent 0 0 0 5px,#7b8940 0 6px 20px;
+  box-sizing: border-box;
+  color: #121212;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Inter,sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1rem 3rem;
+  text-align: center;
+  border: 0;
+}
+
+.start-button:hover {
+  box-shadow: #c7e058 0 0 0 5px, transparent 0 0 0 0;
 }
