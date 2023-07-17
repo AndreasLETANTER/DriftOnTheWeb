@@ -42,7 +42,7 @@ function Help({ noHelpNeeded }) {
           <span className="key-text"> - Nitro</span>
         </span>
         <span className="key">R
-          <span className="key-text"> - Reset the car</span>
+          <span className="key-text"> - Reset the game</span>
         </span>
       </p>
       <button className="start-button" onClick={noHelpNeeded}>Start</button>
