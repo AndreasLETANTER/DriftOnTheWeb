@@ -90,7 +90,7 @@ export const useControls = (vehicleApi, chassisApi, carSpeed, setNitro, resetGam
         } else {
             setNitro(false);
         }
-    }, [controls, vehicleApi, chassisApi, carSpeed]);
+    }, [controls, vehicleApi, chassisApi, carSpeed, setNitro, resetGame]);
     if (nbDrift === 2 && carSpeed > 0.7) {
         isDrifting = true;
         nbDrift = 0;
