@@ -209,9 +209,14 @@ export function Car() {
             <CarSound carSpeed={currentCarSpeed.current}/>
             <DriftSound carSpeed={currentCarSpeed.current}/>
             <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
-            <Html className='html-component' position={[-2.5, -6.6, 0]}>
+            <Html className='bestscore-ui' position={[3, -10.5, 0]}>
+                <div className="bestscore-text">
+                    <span style={{ color: 'white', fontSize: '2em' }}>HighScore: {bestScore}</span>
+                </div>
+            </Html>
+            <Html className='game-text' position={[-2.5, -6.6, 0]}>
                 <div className="score-text">
-                    <span style={{ color: onNitro === true ? 'red' : 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h | Best: {bestScore}</span>
+                    <span style={{ color: onNitro === true ? 'red' : 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h | Time: 0</span>
                 </div>
             </Html>
         </group>

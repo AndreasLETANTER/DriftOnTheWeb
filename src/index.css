@@ -6,7 +6,7 @@ body, html, #root {
   overflow: hidden;
 }
 
-.html-component {
+.game-text {
   height: 100%;
   width: 100%;
   display: flex;
@@ -14,6 +14,21 @@ body, html, #root {
   justify-content: center;
   align-items: center;
   position: absolute;
+}
+
+.bestscore-ui {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  position: absolute;
+}
+
+.bestscore-text {
+  display: flex;
+  width: 100vh;
 }
 
 .score-text {
