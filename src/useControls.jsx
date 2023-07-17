@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 let nbDrift = 0;
 
-export const useControls = (vehicleApi, chassisApi, carSpeed, setNitro) => {
+export const useControls = (vehicleApi, chassisApi, carSpeed, setNitro, resetGame) => {
     let isDrifting = false;
     let [controls, setControls] = useState({
     });
@@ -70,6 +70,7 @@ export const useControls = (vehicleApi, chassisApi, carSpeed, setNitro) => {
             chassisApi.velocity.set(0, 0, 0);
             chassisApi.angularVelocity.set(0, 0, 0);
             chassisApi.rotation.set(0, -Math.PI / 2, 0);
+            resetGame();
         }
         if (controls.b) {
             vehicleApi.setBrake(1, 0);

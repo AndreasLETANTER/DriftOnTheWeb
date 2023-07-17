@@ -64,6 +64,11 @@ export const setFinishLine = (e) => {
     }
 };
 
+const resetGame = () => {
+    score = 0;
+    gameStarted = false;
+};
+
 function CarSound(carSpeed) {
     const accelerationSound = useRef(null);
     const engineSound = useRef(null);
@@ -180,7 +185,7 @@ export function Car() {
         }),
         useRef(null),
     );
-    isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current, setNitro);
+    isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current, setNitro, resetGame);
 
     if (chassisBody.current) {
         if (isDrifting && gameStarted) {
