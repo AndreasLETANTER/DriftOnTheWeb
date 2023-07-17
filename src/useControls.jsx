@@ -66,7 +66,7 @@ export const useControls = (vehicleApi, chassisApi, carSpeed, setNitro) => {
             vehicleApi.setSteeringValue(0, 1);
         }
         if (controls.r) {
-            chassisApi.position.set(-2, 0.3, 0);
+            chassisApi.position.set(-2.2, 0.3, 0);
             chassisApi.velocity.set(0, 0, 0);
             chassisApi.angularVelocity.set(0, 0, 0);
             chassisApi.rotation.set(0, -Math.PI / 2, 0);
