@@ -4,6 +4,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { ColliderBox } from "./ColliderBox";
 import { Ramp } from "./Ramp";
+import { StartingLine } from "./StartingLine";
 
 export function TrackColliderBoxes() {
     return (
@@ -39,6 +40,8 @@ export function TrackColliderBoxes() {
             <ColliderBox position={[-4.15,0,-0.67]} scale={[0.1, 0.5, 0.1]}/>               {/* Signs Collider boxes */}
             <ColliderBox position={[-4.9,0,-0.58]} scale={[0.1, 0.5, 0.1]}/>
             <ColliderBox position={[-0.3,0,1]} scale={[0.1, 0.5, 0.1]}/>
+
+            <StartingLine position={[-1.85, 0, 0]} scale={[0.1, 0.9, 0.9]}/>                {/* Starting Line */}
         </>
     );
 };

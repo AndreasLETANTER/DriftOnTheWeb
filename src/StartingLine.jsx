@@ -1,7 +1,7 @@
 import { useBox } from "@react-three/cannon";
 import { setStartingLine } from "./Car";
 
-const debug = false;
+const debug = true;
 
 export function StartingLine({ position, scale }) {
     useBox(() => ({
