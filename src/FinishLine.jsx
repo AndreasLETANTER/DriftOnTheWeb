@@ -1,7 +1,7 @@
 import { useBox } from "@react-three/cannon";
 import { setFinishLine } from "./Car";
 
-const debug = true;
+const debug = false;
 
 export function FinishLine({ position, scale }) {
     useBox(() => ({
