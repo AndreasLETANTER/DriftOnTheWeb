@@ -13,6 +13,7 @@ let isDrifting = false;
 let score = 0;
 let collided = false;
 let collisionEvent = undefined;
+let gameStarted = false;
 
 function HandleCollision(collisionEvent, carSpeed) {
     const crashSound = useRef(null);
@@ -45,6 +46,11 @@ export const setCollision = (e) => {
     collided = true;
 };
 
+export const setStartingLine = (e) => {
+    score = 0;
+    gameStarted = true;
+};
+
 function CarSound(carSpeed) {
     const accelerationSound = useRef(null);
     const engineSound = useRef(null);
@@ -53,6 +59,7 @@ function CarSound(carSpeed) {
     const gearPosition = carSpeed.carSpeed / (3 / gears);
 
     useFrame(() => {
+        console.log(gameStarted);
         engineSound.current.setVolume(1);
         engineSound.current.setPlaybackRate(1);
         if (collided === true) {
