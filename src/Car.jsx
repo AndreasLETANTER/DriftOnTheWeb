@@ -185,9 +185,9 @@ export function Car() {
             <CarSound carSpeed={currentCarSpeed.current}/>
             <DriftSound carSpeed={currentCarSpeed.current}/>
             <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
-            <Html position={[-2.5, -7, 0]}>
-                <div style={{ color: 'white', fontSize: '2em' }} className="score-text">
-                    <span>Score: {score}</span>
+            <Html className='html-component' position={[-2.5, -6.6, 0]}>
+                <div className="score-text">
+                    <span style={{ color: 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h</span>
                 </div>
             </Html>
         </group>
