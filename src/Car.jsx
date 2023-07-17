@@ -179,7 +179,7 @@ export function Car() {
     isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current, setNitro);
 
     if (chassisBody.current) {
-        if (isDrifting) {
+        if (isDrifting && gameStarted) {
             score += 1000;
         }
     }
