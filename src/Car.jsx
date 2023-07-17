@@ -47,8 +47,10 @@ export const setCollision = (e) => {
 };
 
 export const setStartingLine = (e) => {
-    score = 0;
-    gameStarted = true;
+    if (gameStarted === false) {
+        score = 0;
+        gameStarted = true;
+    }
 };
 
 function CarSound(carSpeed) {
@@ -59,7 +61,6 @@ function CarSound(carSpeed) {
     const gearPosition = carSpeed.carSpeed / (3 / gears);
 
     useFrame(() => {
-        console.log(gameStarted);
         engineSound.current.setVolume(1);
         engineSound.current.setPlaybackRate(1);
         if (collided === true) {
