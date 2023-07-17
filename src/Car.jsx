@@ -53,6 +53,13 @@ export const setStartingLine = (e) => {
     }
 };
 
+export const setFinishLine = (e) => {
+    if (gameStarted === true) {
+        score = 0;
+        gameStarted = false;
+    }
+};
+
 function CarSound(carSpeed) {
     const accelerationSound = useRef(null);
     const engineSound = useRef(null);
