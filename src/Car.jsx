@@ -40,7 +40,7 @@ function HandleCollision(collisionEvent, carSpeed) {
     );
 }
 
-const setCollision = (e) => {
+export const setCollision = (e) => {
     collisionEvent = e;
     collided = true;
 };
@@ -133,7 +133,6 @@ export function Car() {
             mass: 200,
             args: chassisBodyArgs,
             position,
-            onCollide: setCollision,
             rotation: [0, -Math.PI / 2, 0],
         }),
         useRef(null),

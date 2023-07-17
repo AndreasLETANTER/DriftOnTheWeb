@@ -56,7 +56,6 @@ function Intro() {
   const noHelpNeeded = () => {
     setHelpNeeded(false);
   };
-  console.log(helpNeeded);
   return helpNeeded ? <Help noHelpNeeded={noHelpNeeded}/> : <Start/>
 }
 
