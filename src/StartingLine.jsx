@@ -8,6 +8,7 @@ export function StartingLine({ position, scale }) {
         args: scale,
         position,
         type: 'Static',
+        collisionResponse: false,
         onCollide: setStartingLine,
     }));
 
