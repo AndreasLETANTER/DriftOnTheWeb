@@ -1,4 +1,4 @@
-import { useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { useEffect } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
@@ -57,6 +57,9 @@ export function Track() {
     }, [mapColor]);
 
     let geometry = result.scene.children[0].geometry;
+
+    useFrame(() => {
+    });
 
     return (
         <>
