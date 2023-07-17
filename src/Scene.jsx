@@ -20,8 +20,8 @@ export function Scene() {
                     files={process.env.PUBLIC_URL + '/textures/envmap.hdr'}
                     background={"both"}
                 />
-                <PerspectiveCamera makeDefault position={[-6, 3.9, 6.21]} fov={50} />
-                <OrbitControls target={[-2.64, -0.71, 0.03]} enableRotate={false} enableZoom={false}/>
+                <PerspectiveCamera makeDefault position={[-6, 3.9, 6.21]} fov={50} enable/>
+                <OrbitControls target={[-2.64, -0.71, 0.03]} enableRotate={false} enableZoom={false} enableDamping={false} enablePan={false}/>
 
                 <Track/>
                 <Ground/>
