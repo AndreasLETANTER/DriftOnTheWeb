@@ -6,8 +6,9 @@ body, html, #root {
   overflow: hidden;
 }
 
-.speed-text {
+.score-text {
   margin-top: -40px;
+  width: 100vh;
 }
 
 .help-text {

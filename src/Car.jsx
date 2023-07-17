@@ -186,8 +186,8 @@ export function Car() {
             <DriftSound carSpeed={currentCarSpeed.current}/>
             <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
             <Html position={[-2.5, -7, 0]}>
-                <div style={{ color: 'white', fontSize: '2em' }} className="speed-text">
-                    <span>{score}</span>
+                <div style={{ color: 'white', fontSize: '2em' }} className="score-text">
+                    <span>Score: {score}</span>
                 </div>
             </Html>
         </group>
