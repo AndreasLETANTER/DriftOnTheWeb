@@ -1,6 +1,6 @@
 import { useBox, useRaycastVehicle } from '@react-three/cannon';
 import { useFrame, useLoader } from '@react-three/fiber';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { Html } from '@react-three/drei';
 import { useWheels } from './useWheels';
@@ -126,6 +126,7 @@ export function Car() {
     const wheelRadius = 0.05;
     const chassisBodyArgs = [width, height, front * 2];
     const currentCarSpeed = useRef(0);
+    const [onNitro, setNitro] = useState(false);
 
     const [chassisBody, chassiApi] = useBox(
         () => ({
@@ -161,7 +162,7 @@ export function Car() {
         }),
         useRef(null),
     );
-    isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current);
+    isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current, setNitro);
 
     if (chassisBody.current) {
         if (isDrifting) {
@@ -187,7 +188,7 @@ export function Car() {
             <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
             <Html className='html-component' position={[-2.5, -6.6, 0]}>
                 <div className="score-text">
-                    <span style={{ color: 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h</span>
+                    <span style={{ color: onNitro === true ? 'red' : 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h</span>
                 </div>
             </Html>
         </group>

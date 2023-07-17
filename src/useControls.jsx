@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 let nbDrift = 0;
 
-export const useControls = (vehicleApi, chassisApi, carSpeed) => {
+export const useControls = (vehicleApi, chassisApi, carSpeed, setNitro) => {
     let isDrifting = false;
     let [controls, setControls] = useState({
     });
@@ -84,7 +84,10 @@ export const useControls = (vehicleApi, chassisApi, carSpeed) => {
         }
         if (controls.n) {
             vehicleApi.applyEngineForce(300, 0);
-            vehicleApi.applyEngineForce(300, 1)
+            vehicleApi.applyEngineForce(300, 1);
+            setNitro(true);
+        } else {
+            setNitro(false);
         }
     }, [controls, vehicleApi, chassisApi, carSpeed]);
     if (nbDrift === 2 && carSpeed > 0.7) {
