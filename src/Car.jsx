@@ -11,6 +11,7 @@ import { PositionalAudio } from '@react-three/drei';
 
 let isDrifting = false;
 let score = 0;
+let bestScore = 0;
 let collided = false;
 let collisionEvent = undefined;
 let gameStarted = false;
@@ -55,6 +56,9 @@ export const setStartingLine = (e) => {
 
 export const setFinishLine = (e) => {
     if (gameStarted === true) {
+        if (score > bestScore) {
+            bestScore = score;
+        }
         score = 0;
         gameStarted = false;
     }
@@ -202,7 +206,7 @@ export function Car() {
             <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
             <Html className='html-component' position={[-2.5, -6.6, 0]}>
                 <div className="score-text">
-                    <span style={{ color: onNitro === true ? 'red' : 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h</span>
+                    <span style={{ color: onNitro === true ? 'red' : 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h | Best: {bestScore}</span>
                 </div>
             </Html>
         </group>
