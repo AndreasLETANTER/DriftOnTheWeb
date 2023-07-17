@@ -43,7 +43,7 @@ export function TrackColliderBoxes() {
             <ColliderBox position={[-0.3,0,1]} scale={[0.1, 0.5, 0.1]}/>
 
             <StartingLine position={[-1.85, 0, 0]} scale={[0.1, 0.9, 0.9]}/>                {/* Starting Line */}
-            <FinishLine position={[-1, 0, 0.5]} scale={[0.60, 0.8, 0.1]}/>                {/* Finish Line */}
+            <FinishLine position={[-1, 0, 0.5]} scale={[0.60, 0.8, 0.1]}/>                  {/* Finish Line */}
         </>
     );
 };
