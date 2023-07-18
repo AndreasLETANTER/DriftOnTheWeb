@@ -15,6 +15,8 @@ let bestScore = 0;
 let collided = false;
 let collisionEvent = undefined;
 let gameStarted = false;
+let currentTime = 0;
+let bestTime = 0;
 
 function HandleCollision(collisionEvent, carSpeed) {
     const crashSound = useRef(null);
@@ -50,6 +52,7 @@ export const setCollision = (e) => {
 export const setStartingLine = (e) => {
     if (gameStarted === false) {
         score = 0;
+        currentTime = 0;
         gameStarted = true;
     }
 };
@@ -58,14 +61,17 @@ export const setFinishLine = (e) => {
     if (gameStarted === true) {
         if (score > bestScore) {
             bestScore = score;
+            bestTime = currentTime;
         }
         score = 0;
+        currentTime = 0;
         gameStarted = false;
     }
 };
 
 const resetGame = () => {
     score = 0;
+    currentTime = 0;
     gameStarted = false;
 };
 
@@ -197,6 +203,14 @@ export function Car() {
         mesh.scale.set(0.0012, 0.0012, 0.0012);
         mesh.children[0].position.set(-365, -18, -67);
     }, [mesh]);
+
+    useEffect(() => {
+        setInterval(() => {
+            if (gameStarted === true) {
+                currentTime += 1;
+            }
+        }, 1000);
+    }, []);
     return (
         <group ref={vehicle} name='vehicle'>
             <group ref={chassisBody}  name='chassisBody'>
@@ -211,12 +225,12 @@ export function Car() {
             <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
             <Html className='bestscore-ui' position={[3, -10.5, 0]}>
                 <div className="bestscore-text">
-                    <span style={{ color: 'white', fontSize: '2em' }}>HighScore: {bestScore}</span>
+                    <span style={{ color: 'white', fontSize: '2em' }}>HighScore: {bestScore}/{bestTime}</span>
                 </div>
             </Html>
             <Html className='game-text' position={[-2.5, -6.6, 0]}>
                 <div className="score-text">
-                    <span style={{ color: onNitro === true ? 'red' : 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h | Time: 0</span>
+                    <span style={{ color: onNitro === true ? 'red' : 'white', fontSize: '2em' }}>Score: {score} | {Math.round(currentCarSpeed.current * 20)} km/h | Time: {currentTime}</span>
                 </div>
             </Html>
         </group>
