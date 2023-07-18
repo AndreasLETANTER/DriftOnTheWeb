@@ -11,6 +11,7 @@ import { PositionalAudio } from '@react-three/drei';
 
 let isDrifting = false;
 let isCarOnTrack = true;
+let carOffTrackOffset = 0;
 let score = 0;
 let bestScore = 0;
 let collided = false;
@@ -76,14 +77,12 @@ export const setFinishLine = (e) => {
 
 export const setCarOnTrack = (e) => {
     if (gameStarted === true) {
-        console.log("Car is on track");
         isCarOnTrack = true;
     }
 };
 
 export const setCarNotOnTrack = (e) => {
     if (gameStarted === true) {
-        console.log("Car isn't on track");
         isCarOnTrack = false;
     }
 };
@@ -92,6 +91,7 @@ const resetGame = () => {
     score = 0;
     currentTime = 0;
     gameStarted = false;
+    isCarOnTrack = true;
 };
 
 function CarSound(carSpeed) {
@@ -213,6 +213,7 @@ export function Car() {
     isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current, setNitro, resetGame);
 
     if (chassisBody.current) {
+        console.log(isCarOnTrack);
         if (isDrifting && gameStarted && isCarOnTrack) {
             score += 1000;
         }

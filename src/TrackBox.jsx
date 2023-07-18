@@ -10,7 +10,6 @@ export function TrackBox({ position, scale }) {
         position,
         type: 'Static',
         collisionResponse: false,
-        allowSleep: false,
         onCollideEnd: setCarNotOnTrack,
         onCollideBegin: setCarOnTrack,
 
