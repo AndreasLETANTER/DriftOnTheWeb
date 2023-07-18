@@ -28,7 +28,7 @@ function HandleCollision(collisionEvent, carSpeed) {
     useFrame(() => {
         if (collided === true && collisionEvent !== undefined) {
             crashSound.current.stop()
-            crashSound.current.setVolume(2 * (collisionEvent.carSpeed));
+            crashSound.current.setVolume(1.5 * (collisionEvent.carSpeed));
             crashSound.current.play();
             score = 0;
             collisionEvent = undefined;
@@ -104,7 +104,7 @@ function CarSound(carSpeed) {
     const gearPosition = carSpeed.carSpeed / (3 / gears);
 
     useFrame(() => {
-        engineSound.current.setVolume(1);
+        engineSound.current.setVolume(0.4);
         engineSound.current.setPlaybackRate(1);
         if (collided === true) {
             accelerationSound.current.setVolume(0);
