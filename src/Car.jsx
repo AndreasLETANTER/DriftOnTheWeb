@@ -61,7 +61,7 @@ export const setStartingLine = (e) => {
 
 export const setFinishLine = (e) => {
     if (gameStarted === true) {
-        if (score > bestScore) {
+        if (score > bestScore || (score === bestScore && currentTime < bestTime)) {
             bestScore = score;
             bestTime = currentTime;
         }
