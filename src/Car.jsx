@@ -215,7 +215,6 @@ export function Car() {
     isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current, setNitro, resetGame);
 
     if (chassisBody.current) {
-        console.log(isCarOnTrack);
         if (isDrifting && gameStarted && isCarOnTrack) {
             score += 1000;
         }
