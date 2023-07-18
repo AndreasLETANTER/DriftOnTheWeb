@@ -31,6 +31,21 @@ body, html, #root {
   width: 100vh;
 }
 
+.lastscore-ui {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: absolute;
+}
+
+.lastscore-text {
+  display: flex;
+  width: 100vh;
+}
+
 .score-text {
   display: flex;
   align-items: center;

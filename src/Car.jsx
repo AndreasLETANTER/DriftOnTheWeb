@@ -17,6 +17,8 @@ let collisionEvent = undefined;
 let gameStarted = false;
 let currentTime = 0;
 let bestTime = 0;
+let lastScore = 0;
+let lastTime = 0;
 
 function HandleCollision(collisionEvent, carSpeed) {
     const crashSound = useRef(null);
@@ -63,6 +65,8 @@ export const setFinishLine = (e) => {
             bestScore = score;
             bestTime = currentTime;
         }
+        lastScore = score;
+        lastTime = currentTime;
         score = 0;
         currentTime = 0;
         gameStarted = false;
@@ -226,6 +230,11 @@ export function Car() {
             <Html className='bestscore-ui' position={[1, -9.1, 0]}>
                 <div className="bestscore-text">
                     <span style={{ color: 'white', fontSize: '2em' }}>HighScore: {bestScore}/{bestTime}</span>
+                </div>
+            </Html>
+            <Html className='lastscore-ui' position={[11, -15.9, 0]}>
+                <div className="lastscore-text">
+                    <span style={{ color: 'white', fontSize: '2em' }}>LastScore: {lastScore}/{lastTime}</span>
                 </div>
             </Html>
             <Html className='game-text' position={[-2.5, -6.6, 0]}>
