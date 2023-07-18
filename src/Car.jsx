@@ -223,7 +223,7 @@ export function Car() {
             <CarSound carSpeed={currentCarSpeed.current}/>
             <DriftSound carSpeed={currentCarSpeed.current}/>
             <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
-            <Html className='bestscore-ui' position={[3, -10.5, 0]}>
+            <Html className='bestscore-ui' position={[1, -9.1, 0]}>
                 <div className="bestscore-text">
                     <span style={{ color: 'white', fontSize: '2em' }}>HighScore: {bestScore}/{bestTime}</span>
                 </div>
