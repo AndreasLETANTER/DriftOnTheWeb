@@ -23,7 +23,7 @@ let lastScore = 0;
 let lastTime = 0;
 
 function HandleCollision(collisionEvent, carSpeed) {
-    const crashSound = useRef(null);
+    const crashSound = useRef(null);;
 
     useFrame(() => {
         if (collided === true && collisionEvent !== undefined) {
@@ -38,7 +38,7 @@ function HandleCollision(collisionEvent, carSpeed) {
     return (
         <>
             <PositionalAudio
-                url="/sounds/crash.mp3"
+                url={process.env.PUBLIC_URL + "/sounds/crash.mp3"}
                 ref={crashSound}
                 distance={1}
                 loop={false}
