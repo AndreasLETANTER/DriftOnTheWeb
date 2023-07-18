@@ -2,7 +2,7 @@
   "name": "DrifOnTheWeb",
   "version": "0.1.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://andreasletanter.github.io/DriftOnTheWeb",
   "dependencies": {
     "@react-three/cannon": "^6.5.2",
     "@react-three/drei": "^9.78.1",
