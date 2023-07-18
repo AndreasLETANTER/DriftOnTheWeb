@@ -1,7 +1,7 @@
 import { useBox } from "@react-three/cannon";
 import { setCarOnTrack, setCarNotOnTrack } from "./Car";
 
-const debug = true;
+const debug = false;
 
 export function TrackBox({ position, scale }) {
 
