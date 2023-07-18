@@ -83,7 +83,9 @@ export const setCarOnTrack = (e) => {
 
 export const setCarNotOnTrack = (e) => {
     if (gameStarted === true) {
-        isCarOnTrack = false;
+        setTimeout(() => {
+            isCarOnTrack = false;
+        }, 300);
     }
 };
 
