@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/DriftOnTheWeb/static/css/main.0c0fea79.css",
-    "main.js": "/DriftOnTheWeb/static/js/main.6e9b3ac4.js",
-    "index.html": "/DriftOnTheWeb/index.html",
-    "main.0c0fea79.css.map": "/DriftOnTheWeb/static/css/main.0c0fea79.css.map",
-    "main.6e9b3ac4.js.map": "/DriftOnTheWeb/static/js/main.6e9b3ac4.js.map"
+    "main.css": "./static/css/main.0c0fea79.css",
+    "main.js": "./static/js/main.920a8a1a.js",
+    "index.html": "./index.html",
+    "main.0c0fea79.css.map": "./static/css/main.0c0fea79.css.map",
+    "main.920a8a1a.js.map": "./static/js/main.920a8a1a.js.map"
   },
   "entrypoints": [
     "static/css/main.0c0fea79.css",
-    "static/js/main.6e9b3ac4.js"
+    "static/js/main.920a8a1a.js"
   ]
 }
