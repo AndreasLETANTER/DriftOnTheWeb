@@ -38,7 +38,7 @@ function HandleCollision(collisionEvent, carSpeed) {
     return (
         <>
             <PositionalAudio
-                url={process.env.PUBLIC_URL + "/sounds/crash.mp3"}
+                url={process.env.PUBLIC_URL + '/sounds/crash.mp3'}
                 ref={crashSound}
                 distance={1}
                 loop={false}
