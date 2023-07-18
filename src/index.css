@@ -28,6 +28,7 @@ body, html, #root {
 
 .bestscore-text {
   display: flex;
+  flex-direction: column;
   width: 100vh;
 }
 
