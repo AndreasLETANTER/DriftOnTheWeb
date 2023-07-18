@@ -137,12 +137,12 @@ function CarSound(carSpeed) {
     );
 }
 
-function DriftSound(carSpeed) {
+function DriftSound(isDrifting) {
     const driftSound = useRef(null);
 
     useFrame(() => {
-        if (isDrifting === true && driftSound.current.isPlaying === false) {
-            driftSound.current.setVolume(1.5);
+        if (isDrifting.isDrifting === true && driftSound.current.isPlaying === false) {
+            driftSound.current.setVolume(1);
             driftSound.current.setPlaybackRate(1);
             driftSound.current.play();
         } else {
@@ -151,7 +151,7 @@ function DriftSound(carSpeed) {
             } else {
                 setTimeout(() => {
                     driftSound.current.setVolume(0);
-                }, 500000);
+                }, 300000);
             }
         }
     });
@@ -242,7 +242,7 @@ export function Car() {
             <WheelDebug radius={wheelRadius} wheelRef={wheels[2]}/>
             <WheelDebug radius={wheelRadius} wheelRef={wheels[3]}/>
             <CarSound carSpeed={currentCarSpeed.current}/>
-            <DriftSound carSpeed={currentCarSpeed.current}/>
+            <DriftSound isDrifting={isDrifting}/>
             <HandleCollision collisionEvent={collisionEvent} carSpeed={currentCarSpeed.current}/>
             <Html className='bestscore-ui' position={[0.5, -8.6, 0]}>
                 <div className="bestscore-text">
