@@ -6,6 +6,7 @@ import { ColliderBox } from "./ColliderBox";
 import { Ramp } from "./Ramp";
 import { StartingLine } from "./StartingLine";
 import { FinishLine } from "./FinishLine";
+import { TrackBox } from "./TrackBox";
 
 export function TrackColliderBoxes() {
     return (
@@ -44,6 +45,8 @@ export function TrackColliderBoxes() {
 
             <StartingLine position={[-1.85, 0, 0]} scale={[0.1, 0.9, 0.9]}/>                {/* Starting Line */}
             <FinishLine position={[-1, 0, 0.5]} scale={[0.60, 0.8, 0.1]}/>                  {/* Finish Line */}
+
+            <TrackBox position={[-1.85, 0, 0]} scale={[1, 0.2, 1]}/>                    {/* Track Box */}
         </>
     );
 };

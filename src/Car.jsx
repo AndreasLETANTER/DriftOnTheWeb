@@ -10,6 +10,7 @@ import { MathUtils } from 'three';
 import { PositionalAudio } from '@react-three/drei';
 
 let isDrifting = false;
+let isCarOnTrack = true;
 let score = 0;
 let bestScore = 0;
 let collided = false;
@@ -70,6 +71,20 @@ export const setFinishLine = (e) => {
         score = 0;
         currentTime = 0;
         gameStarted = false;
+    }
+};
+
+export const setCarOnTrack = (e) => {
+    if (gameStarted === true) {
+        console.log("Car is on track");
+        isCarOnTrack = true;
+    }
+};
+
+export const setCarNotOnTrack = (e) => {
+    if (gameStarted === true) {
+        console.log("Car isn't on track");
+        isCarOnTrack = false;
     }
 };
 
@@ -198,7 +213,7 @@ export function Car() {
     isDrifting = useControls(vehicleApi, chassiApi, currentCarSpeed.current, setNitro, resetGame);
 
     if (chassisBody.current) {
-        if (isDrifting && gameStarted) {
+        if (isDrifting && gameStarted && isCarOnTrack) {
             score += 1000;
         }
     }
