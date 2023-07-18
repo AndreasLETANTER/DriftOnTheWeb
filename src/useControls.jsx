@@ -7,6 +7,8 @@ export const useControls = (vehicleApi, chassisApi, carSpeed, setNitro, resetGam
     let [controls, setControls] = useState({
     });
 
+    setInterval(() => {
+    }, 100);
     useEffect(() => {
         const keyDownPressHandler = (e) => {
             setControls((controls) => ({
