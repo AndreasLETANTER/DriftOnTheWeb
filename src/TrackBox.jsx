@@ -12,6 +12,7 @@ export function TrackBox({ position, scale }) {
         collisionResponse: false,
         onCollideEnd: setCarNotOnTrack,
         onCollideBegin: setCarOnTrack,
+        onCollide: setCarOnTrack,
 
     }));
 
